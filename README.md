@@ -18,4 +18,8 @@ php artisan migrate
 php artisan db:seed
 ```
 
-Run command php artisan serve and open http://127.0.0.1:8000 on browser
+```sh
+php artisan serve
+```
+
+Open http://127.0.0.1:8000 on browser

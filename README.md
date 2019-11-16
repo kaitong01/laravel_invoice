@@ -1,9 +1,9 @@
-# Laravel -> by Chong 
+# Laravel -> by BKKSOFT 
 
-## Installation
+## Run steps
 
 ```sh
-composer require fzaninotto/faker
+composer install
 ```
 
 ```sh
@@ -17,3 +17,5 @@ php artisan migrate
 ```sh
 php artisan db:seed
 ```
+
+Run command php artisan serve and open http://127.0.0.1:8000 on browser

@@ -1,4 +1,4 @@
-# LARAVEL -> BKKSOFT 
+# LARAVEL & BKKSOFT 
 
 
 ## Run steps

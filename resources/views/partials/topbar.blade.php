@@ -9,8 +9,14 @@
     <nav class="navbar navbar-expand-md navbar-dark">
 
         <a class="navbar-brand" href="{{ url('/') }}">
-            <h1>BKK SOFT</h1>
-            <h2>Contacts</h2>
+            <div class="d-flex align-items-center">
+                <img src="<?=asset('/images/bkksoft-logo-white.png')?>" alt="" />
+                <div class="ml-2">
+                    <h1>BKK SOFT</h1>
+                    <h2>Power by Laravel</h2>
+                </div>
+            </div>
+            
         </a>
 
         <div class="collapse navbar-collapse">

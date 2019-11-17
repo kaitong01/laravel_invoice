@@ -11,7 +11,7 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             <div class="d-flex align-items-center">
                 <img src="<?=asset('/images/bkksoft-logo-white.png')?>" alt="" />
-                <div class="ml-2">
+                <div class="ml-2 navbar-brand-text">
                     <h1>BKK SOFT</h1>
                     <h2>Power by Laravel</h2>
                 </div>

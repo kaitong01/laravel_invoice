@@ -2497,3 +2497,9 @@ table tr.disabled td.td-light{
     background-color: #dfe7fe;
     border-radius: 8px;
 }
+
+.navbar-brand-text{
+    background: -webkit-linear-gradient(#ffecb4, #ffae75);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

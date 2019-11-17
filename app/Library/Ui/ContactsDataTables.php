@@ -95,7 +95,7 @@ class ContactsDataTables extends Ui
 				$tds .= '<td'.$cls.'>'.$val.'</td>';
 			}
 
-			$tr .= '<tr wholesale-id="'.$item['id'].'">'.$tds.'</tr>';
+			$tr .= '<tr contact-id="'.$item['id'].'">'.$tds.'</tr>';
 		}
 
     	return $tr;
@@ -106,14 +106,13 @@ class ContactsDataTables extends Ui
     {
 
         $picture = !empty($data['avatar_url'])
-            ? '<img src="'. $data['avatar_url'].'" alt="" />'
+            ? '<img src="'. $data['avatar_url'].'" alt="" style="width:100%" />'
             : '';
 
-    	return '<div class="media">
-			<div class="pic-wrap mr-2" style="width: 36px;"><div class="pic pic-circle squared rounded-circle"  ref="avatar_url" data-type="image">'.$picture.'</div></div>
+    	return '<div class="media align-items-center">
+			<div class="pic-wrap mr-2" style="width: 36px;"><div class="pic pic-circle rounded-circle"  ref="avatar_url" data-type="image">'.$picture.'</div></div>
 			<div class="media-body">'.
 				'<a href="'.asset( "{$this->curentLink}/{$data['id']}" ).'/edit" data-plugin="lightbox"><strong ref="name">'.$data['name'].'</strong></a>'.
-				// '<div class="y-ellipsis clamp-2"><span ref="description">'. $this->fn->q('text')->more($data['description']).'</span></div>'.
 			'</div>
 		</div>';
     }

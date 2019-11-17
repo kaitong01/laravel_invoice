@@ -8,11 +8,11 @@ use App\Models\Contact AS MDB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 // use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\DB;
 // 
-// use Illuminate\Support\Facades\Storage;
 
 class ApiContactController extends Controller
 {
@@ -20,7 +20,7 @@ class ApiContactController extends Controller
     protected $cValidator = [
         'name' => 'required|max:75',
 
-        'file1' => 'mimes:jpeg,jpg,png | max:1000',
+        'file1' => 'mimes:jpeg,jpg,png|max:1000',
     ];
 
     protected $cValidatorMsg = [
@@ -69,13 +69,10 @@ class ApiContactController extends Controller
 
                 // upload image
 
-            //     if($request->has('file1')){
-
-            //         // $data = Wholesale::find( $id );
-            //         $data->logo = $request->file('logo')->store('uploads', 'public' );
-            //         // $data->logo = Storage::putFile('uploads', $request->file('logo'));
-            //         $data->update();
-            //     }
+                if($request->has('file1')){
+                    $data->avatar = $request->file('file1')->store('avatar', 'public');
+                    $data->update();
+                }
 
                 $arr['code'] = 200;
                 $arr['info'] = 'The request has succeeded.';
@@ -95,7 +92,7 @@ class ApiContactController extends Controller
     }
 
     // update data
-    public function update(Request $request, $id)
+    public function update(MDB $db, Request $request, $id)
     {
         $data = MDB::findOrFail($id);
 
@@ -112,51 +109,35 @@ class ApiContactController extends Controller
         }
         else{
 
+
+            // ลบรูปเดิม
+            if(!empty($data->avatar) && ($request->has('file1') || $request->has('avatar_cancel_file')) ){
+                Storage::disk('public')->delete($data->avatar);
+                $data->avatar = null;
+            }
+
             if( $data->fill( Input::all() )->update() ){
+
+                if($request->has('file1')){
+
+                    // เพิ่มรูปใหม่
+                    $data->avatar = $request->file('file1')->store('avatar', 'public' );
+                    $data->update();
+                }
+
 
                 $arr['code'] = 200;
                 $arr['info'] = 'The request has succeeded.';
                 $arr['message'] = 'บันทึกข้อมูลเรียบร้อย';
+
+                // callback update
+                $arr['update'] = ['[contact-id='.$id.']', $db->convert($data)];
             }
             else{
                 $arr['code'] = 422;
                 $arr['message'] = 'บันทึกข้อมูลล้มเหล่ว, กรุณาลองใหม่';
             }
         }
-       
-
-        //     // $folder_path =
-        //     if(!empty($data->logo) && ($request->has('logo') || $request->_logo) ){
-
-        //         Storage::disk('public')->delete($data->logo);
-        //         $data->logo = '';
-        //     }
-
-        //     if($request->has('logo')){
-        //         // $data->logo = Storage::putFile('uploads', $request->file('logo'));
-        //         $data->logo = $request->file('logo')->store('uploads', 'public' );
-        //     }
-
-        //     if( $data->update() ){
-        //         $arr['code'] = 200;
-        //         $arr['message'] = 'บันทึกข้อมูลเรียบร้อย';
-
-
-        //         if( !empty($data->logo) ){
-        //             $data->logo_url = asset("storage/".$data->logo);
-        //         }
-        //         else{
-        //             $data->logo_url = '';
-        //         }
-
-        //         $arr['update'] = ['[wholesale-id='.$id.']', $data];
-        //     }
-        //     else{
-        //         $arr['code'] = 422;
-        //         $arr['message'] = 'บันทึกข้อมูลล้มเหล่ว, กรุณาลองใหม่';
-        //     }
-        // }
-
 
         return response()
             ->json($arr, $arr['code'])
@@ -172,10 +153,11 @@ class ApiContactController extends Controller
             return response()->json(["message" => 'Record not found!'], 404);
         }
 
+        
         // ลบรูป
-        // if( !empty($data->image) ){
-        //     Storage::disk('public')->delete($data->image);
-        // }
+        if( !empty($data->avatar) ){
+            Storage::disk('public')->delete($data->avatar);
+        }
 
 
         // ลบข้อมูล

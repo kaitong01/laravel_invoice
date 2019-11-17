@@ -431,11 +431,10 @@ if ( typeof Object.create !== 'function' ) {
                                         }
                                         else if( type=='image' ){
 
-                                            if( nodeName=='img' ){
+                                            if( nodeName=='IMG' ){
                                                 $elem.attr('src', val);
                                             }
                                             else if( val!='' ){
-
                                                 $elem.html( $('<img>', {src: val}) );
                                             }
                                             else{

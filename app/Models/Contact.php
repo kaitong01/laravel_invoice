@@ -141,6 +141,10 @@ class Contact extends Model
 
         // $data->name = ucwords($permalink);
 
+        if( !empty( $data->avatar ) ){
+            $data->avatar_url = asset("storage/{$data->avatar}");
+        }
+
         return $data;
     }
 

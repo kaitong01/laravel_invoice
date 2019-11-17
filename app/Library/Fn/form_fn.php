@@ -457,7 +457,7 @@ class form_Fn extends Fn{
 			$options['name'] = $options;
 		}
 
-		$options = array_merge( array(
+		$options = array_merge( [
 			'name' => 'file1',
 			'accept' => 'image/jpeg,image/png',
 			'width' => 230,
@@ -465,8 +465,10 @@ class form_Fn extends Fn{
 			'size' => 'auto',
 
 			'dropzoneText' => 'แนบไฟล์รูป',
+
+			// 'cancelFileName' => null
 			
-		), $options);
+		], $options);
 
 		if( !isset($options['dropzoneSubtext']) ){
 			$options['dropzoneSubtext'] = "{$options['width']}x{$options['height']}";

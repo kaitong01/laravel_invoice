@@ -16529,7 +16529,8 @@ table {
   width: 100%;
 }
 
-.pic.squared {
+.pic.squared,
+.pic-circle {
   padding-top: 100%;
 }
 
@@ -16549,6 +16550,10 @@ table {
   height: 100%;
   font-size: 1rem;
   text-anchor: middle;
+}
+
+.pic-32 {
+  width: 32px;
 }
 
 .pic-wrap {

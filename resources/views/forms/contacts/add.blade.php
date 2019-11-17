@@ -9,6 +9,8 @@ $imageCoverOpt = [
     'height'         => 150,
 
     'dropzoneText' => 'รูป',
+
+    'cancelFileName' => 'avatar_cancel_file'
 ];
 
 if( !empty($data) ){

@@ -13,15 +13,13 @@ class ContactsDataTables extends Ui
     	$key = [];
 
     	$key[] = ['label'=>'#', 'cls'=>'td-index', 'type'=>'index'];
-    	// $key[] = ['id'=>'created_at', 'label'=>'สร้าง', 'cls'=>'td-date', 'type'=>'date'];
-    	// $key[] = ['id'=>'status', 'label'=>'สถานะ', 'cls'=>'td-status', 'type'=>'status'];
-    	$key[] = ['id'=>'name', 'label'=>'ชื่อ', 'cls'=>'td-name', 'type' => 'groupName'];
-    	$key[] = ['id'=>'email', 'label'=>'อีเมล', 'cls'=>'td-email'];
-    	$key[] = ['id'=>'phone_number', 'label'=>'หมายเลขโทรศัพท์', 'cls'=>'td-phone'];
-    	$key[] = ['id'=>'company', 'label'=>'ตำแหน่งงานและบริษัท', 'cls'=>'td-company'];
+    	$key[] = ['id'=>'name', 'label'=>'ชื่อ', 'cls'=>'td-name', 'type' => 'groupName', 'icon'=>'user-circle'];
+    	$key[] = ['id'=>'email', 'label'=>'อีเมล', 'cls'=>'td-email', 'icon'=>'envelope'];
+    	$key[] = ['id'=>'phone_number', 'label'=>'หมายเลขโทรศัพท์', 'cls'=>'td-phone', 'icon'=>'phone-alt'];
+    	$key[] = ['id'=>'company', 'label'=>'ตำแหน่งงานและบริษัท', 'cls'=>'td-company', 'icon'=>'building'];
 		// $key[] = ['id'=>'tags', 'label'=>'แท็ก', 'cls'=>'td-group-status'];
 		
-    	$key[] = ['id'=>'updated_at', 'label'=>'แก้ไขล่าสุด', 'cls'=>'td-date td-light', 'type'=>'date'];
+    	$key[] = ['id'=>'updated_at', 'label'=>'แก้ไขล่าสุด', 'cls'=>'td-date td-light', 'type'=>'date', 'icon'=>'calendar-alt'];
     	$key[] = ['id'=>'action', 'cls'=>'td-action', 'type'=>'action'];
 
     	return $key;
@@ -43,7 +41,7 @@ class ContactsDataTables extends Ui
 
 	    		$label = isset($value['label']) ?$value['label']: '';
 
-	    		$ico = isset($value['icon']) ? '<i class="mr-1 icon-'.$value['icon'].'"></i>':'';
+	    		$ico = isset($value['icon']) ? '<i class="mr-1 fa fa-'.$value['icon'].'"></i>':'';
 	    		$cls = isset($value['cls']) ? ' class="'.$value['cls'].'"':'';
 				$ths .= '<th'.$cls.'>'.$ico.'<span>'.$label.'</span></th>';
 				//  data-col="'.$key.'"
@@ -147,8 +145,8 @@ class ContactsDataTables extends Ui
 
     public function actions($data)
     {
-    	$val = '<a href="'.asset( $this->curentLink. '/'.$data['id']).'/edit" data-plugin="lightbox" class="btn btn-sm btn-primary" title="แก้ไข"><i class="fa fa-pencil"></i></a>';
-		$val .= '<a href="'.asset( $this->curentLink. '/'.$data['id'].'/delete').'" data-plugin="lightbox" class="btn btn-sm btn-danger ml-2" title="ลบ"><i class="fa fa-remove"></i></a>';
+    	$val = '<a href="'.asset( $this->curentLink. '/'.$data['id']).'/edit" data-plugin="lightbox" class="btn btn-sm btn-outline-primary" title="แก้ไข"><i class="far fa-pen"></i></a>';
+		$val .= '<a href="'.asset( $this->curentLink. '/'.$data['id'].'/delete').'" data-plugin="lightbox" class="btn btn-sm btn-outline-danger ml-2" title="ลบ"><i class="far fa-trash-alt"></i></a>';
 
 		return $val;
     }

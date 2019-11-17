@@ -19,7 +19,7 @@ Auth::routes([
 
 Route::group(['middleware' => ['auth']], function () {
 
-    # Home
+    # Start Page
     Route::get('/', function ()
     {
         return redirect('/contacts');

@@ -20,7 +20,7 @@
                 {{-- end: title --}}
 
                 <div>
-                    <button type="button" class="btn btn-outline-secondary ml-2" data-action="refresh"><i class="fa fa-refresh"></i></button>
+                    <button type="button" class="btn btn-outline-secondary ml-2" data-action="refresh"><i class="fa fa-redo"></i></button>
                 </div>
             </div>
 

@@ -28,8 +28,10 @@ mix
     .js('resources/assets/js/app.js', 'public/js')
 
     .sass('resources/assets/sass/app.scss', 'public/css')
-    // .less('node_modules/bootstrap-datepicker/less/datepicker.less', 'public/css')
+    // .sass('node_modules/@fortawesome/fontawesome-free/scss/fontawesome.sass', 'public/css')
 
-   ;
+    // .version()
+    ;
+   
 
 

@@ -41,7 +41,7 @@ class ContactsDataTables extends Ui
 
 	    		$label = isset($value['label']) ?$value['label']: '';
 
-	    		$ico = isset($value['icon']) ? '<i class="mr-1 fa fa-'.$value['icon'].'"></i>':'';
+	    		$ico = isset($value['icon']) ? '<i class="mr-1 fal fa-'.$value['icon'].'"></i>':'';
 	    		$cls = isset($value['cls']) ? ' class="'.$value['cls'].'"':'';
 				$ths .= '<th'.$cls.'>'.$ico.'<span>'.$label.'</span></th>';
 				//  data-col="'.$key.'"

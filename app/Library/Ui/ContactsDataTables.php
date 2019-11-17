@@ -105,7 +105,7 @@ class ContactsDataTables extends Ui
 
         $picture = !empty($data['avatar_url'])
             ? '<img src="'. $data['avatar_url'].'" alt="" style="width:100%" />'
-            : '';
+            : '<i class="far fa-user" style="position: absolute;top: 50%;left: 50%;color: #fff;margin-top: -8px;margin-left: -7px;"></i>';
 
     	return '<div class="media align-items-center">
 			<div class="pic-wrap mr-2" style="width: 36px;"><div class="pic pic-circle rounded-circle"  ref="avatar_url" data-type="image">'.$picture.'</div></div>

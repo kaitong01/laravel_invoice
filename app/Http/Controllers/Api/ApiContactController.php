@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Contact AS MDB;
 
 use Illuminate\Http\Request;
@@ -37,17 +38,14 @@ class ApiContactController extends Controller
     public function index(MDB $db, Request $request)
     {
         $res = $db->find($request);
-
-
         $res['items'] = $this->ui->item('ContactsDataTables')->init($res['data'], $res['options']);
 
-        $arr['code'] = 200;
-        $arr['info'] = 'Contacts results successfully';
-        $arr['message'] = 'The request has succeeded.';
-
-        // $data = [];
+        $res['code'] = 200;
+        $res['info'] = 'Contacts results successfully';
+        $res['message'] = 'The request has succeeded.';
+        
         return response()
-            ->json(array_merge($arr, $res), 200)
+            ->json($res, 200)
             ->header('Content-Type', 'application/json');
     }
 

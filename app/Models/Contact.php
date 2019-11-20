@@ -27,7 +27,7 @@ class Contact extends Model
 
     protected $hidden = [];
 
-    # get: Data
+    # get: Data form database
     public function get($id){
 
         $sth = DB::table( $this->table );
@@ -67,17 +67,22 @@ class Contact extends Model
         # connect DB
         $sth = DB::table( $this->table );
 
-        // set select: fields
+        # set select: fields
         // $sth->select( $this->fields );
-        // ->pluck('country_id as id')
 
-        // set condition
+        # set condition 
+        if( $request->has('status') ){
 
-        $sth->where( 'status', '=', 1 );
+            if( is_numeric($request->status) ) {
+                $sth->where( 'status', '=', $request->status );
+            }
+        }
 
+        if( !empty($request->q) ){
+            $sth->where( 'name', 'LIKE', "{$request->q}%" );
+        }
 
-
-        // sort data
+        # set sort data
         if( $request->has('sort') ){
             // $ops['sort'] = $request->sort;
             // $sort = $ops['sort'];
@@ -97,8 +102,7 @@ class Contact extends Model
         $sth->skip( ($ops['page']*$ops['limit'])- $ops['limit']);
         $sth->take( $ops['limit'] );
 
-
-        // get results
+        # get results
         $results = $sth->paginate($ops['limit']);
 
         # response
@@ -108,7 +112,6 @@ class Contact extends Model
         $paramquery = http_build_query([
             'limit' => $ops['limit'],
         ]);
-
 
         if( !empty($this->uri) ){
             if( ($ops['page']*$ops['limit']) < $ops['total']  ){
@@ -134,7 +137,6 @@ class Contact extends Model
         return $data;
     }
     public function convert($data){
-
 
         // $permalink = strtolower($data->name);
         // $data->permalink = asset('/tours/countries/'.$permalink);

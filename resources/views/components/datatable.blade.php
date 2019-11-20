@@ -77,10 +77,6 @@
     </div>
     {{-- end: Datatable -> Header --}}
 
-
-
-
-
     {{-- Datatable -> Body --}}
     <div class="table-body datatable-body layout__box o__flexes-to-1 position-relative" role="container">
         {{-- Datatable -> Body --}}

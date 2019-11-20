@@ -20,7 +20,6 @@ Route::prefix('v1')->group(function () {
         'index', 'store', 'update', 'destroy'
     ]);
 
-
     // Route::apiResources([
     //     'contacts' => 'Api\ApiContactController',
     // ]);

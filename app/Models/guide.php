@@ -16,9 +16,9 @@ class guide extends Model
     // public $fields = ['*'];
 
     protected $fillable = [
-        'invoiceuserid ', 'invoiceusername ', 'invoicebankid ', 
+        'invoice_userid ', 'invoice_username ', 'invoice_bankid ', 
 
-        'invoiceback ', 'invoicetype ', 'invoicelist ','invoiceprice '
+        'invoice_back ', 'invoice_type ', 'invoice_list ','invoice_listprice '
     ];
 
     protected $hidden = [];
@@ -26,7 +26,7 @@ class guide extends Model
     # get: Data form database
     public function get($id){
 
-        $sth = DB::table( $this->table)->join('monn', 'invoice.invoicetype', '=', 'monn.monneytypeid');
+        $sth = DB::table( $this->table)->join('monn', 'invoice.invoice_type', '=', 'monn.monneytypeid');
        
 
         // $sth->select( $this->fillable );

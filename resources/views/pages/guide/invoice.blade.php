@@ -1,11 +1,10 @@
-
-<?php 
+<?php
 $form = new Form();
 $formBox = $form->create()
 
-->html();
+    ->html();
 
-?>        
+?>
 @extends('layouts.admin')
 
 @isset( $title )
@@ -17,61 +16,66 @@ $formBox = $form->create()
     <div class="col-md-10">
 
         <div class="card mt-5">
-          <div class="card-header" style="font-weight: bold; font-size: 20px;">
-           รายการใบสำคัญจ่าย
-       </div>
-       <div class="card-body">
-        <p class="card-text">
-          <div class="float-right" style="margin-right: 20px;" align=""> 
-    <button class="btn btn-primary addform"><i class="fas fa-plus"></i> เพิ่มรายการ</button>  <button class="btn btn-danger delform"><i class="fas fa-trash-alt"></i> ลบรายการ</button>
-</div>
-            <form method="post" action="/api/v1/guide/invoice" class="container mt-5" >
-                @csrf   
-                <div>
-                  <input type="hidden" class="form-control" name="invoiceuserid">
-                  <input type="hidden" class="form-control" name="invoicetype" value="1" disabled>
-        
-               </div>
-                <div class="" width="50px;">
-                    <table class="table table-bordered   text-center">
-                      <thead class="thead-dark ">
-                        <tr>
-                          <th scope="col">รายการ</th>
-                          <th scope="col">จำนวนเงิน(บาท)</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="managetable" id="managetable">
-                     <!--  <div class="list" id="div_1"> -->
-                        
-                      <td><input type="text" class="form-control" placeholder="รายการ" name="invoicelist" id="list"></td>
-                      <td><input type="text" class="form-control price" placeholder="จำนวนเงิน" name="invoiceprice" id="price"></td>
-                      <!-- <td class="tableform"></td> -->
-
-                      <!-- </div> -->
-                  </tr>
-              </tbody>
-          </table>
-          <label class=""  style="font-weight: bold;">รวมเงิน</label>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col-8">
-
-               <input type="text" name="" class="form-control" placeholder="บาทถ้วน" id="invoicethaiprice" name="invoicethaiprice">
+            <div class="card-header" style="font-weight: bold; font-size: 20px;">
+                รายการใบสำคัญจ่าย
             </div>
-            <div class="col-4">
-               <input type="text" name="" class="form-control" name="invoiceprice" id="invoiceprice" placeholder="บาท">
-            </div>
-           
-          </div>
-          <!--   <?=$formBox?> -->
-      </div><br>    
-  </form></p>
-  <div class="text_center" align="center"> 
-    <a href="" class="btn btn-dark" style="width: 90px;">บันทึก</a>
-</div>
+            <div class="card-body">
+                <p class="card-text">
+                    <div class="float-right" style="margin-right: 20px;" align="">
+                        <button class="btn btn-success addform"><i class="fas fa-plus"></i> เพิ่มรายการ</button> <button class="btn btn-danger delform"><i class="fas fa-trash-alt"></i> ลบรายการ</button>
+                    </div>
+                    <form method="post" action="/api/v1/guide/invoice" class="container mt-5">
+                        @csrf
+                        <div>
+                            <input type="hidden" class="form-control" name="invoice_userid">
+                            <input type="hidden" class="form-control" name="invoice_type" value="1" disabled>
 
-</div>
-</div>
+                        </div>
+                        <div class="" width="50px;">
+                            <table class="table table-bordered   text-center">
+                                <thead class="thead-dark ">
+                                    <tr>
+                                        <th scope="col">รายการ</th>
+                                        <th scope="col">จำนวนเงิน(บาท)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="managetable" id="managetable">
+                                        <!--  <div class="list" id="div_1"> -->
+
+                                        <td><input type="text" class="form-control" placeholder="รายการ" name="invoice_list" id="list"></td>
+                                        <td><input type="text" class="form-control price" placeholder="จำนวนเงิน" name="invoice_price" id="price"></td>
+                                        <!-- <td class="tableform"></td> -->
+
+                                        <!-- </div> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <form>
+                                <div class="col">
+                                    <label class="" style="font-weight: bold;">รวมเงิน</label>
+                                    <div class="row" style="margin-top: 10px;">
+                                        <div class="col-8">
+
+                                            <input type="text" name="" class="form-control" placeholder="บาทถ้วน" id="invoice_thaiprice" name="invoice_thaiprice">
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="text" name="" class="form-control" name="invoice_price" id="invoice_price" placeholder="บาท">
+                                        </div>
+                                    </div>
+                            </form>
+
+                        </div>
+                        <!--   <?= $formBox ?> -->
+            </div><br>
+            </form>
+            </p>
+            <div class="text_center" align="center">
+                <a href="" class="btn btn-primary" style="width: 90px;">บันทึก</a>
+            </div>
+
+        </div>
+    </div>
 </div>
 </div>
 

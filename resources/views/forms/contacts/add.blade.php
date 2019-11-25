@@ -44,6 +44,42 @@ $formBox = $form->create()
    ->field($imageCoverOpt['name'])
         ->label('รูป')
         ->text( '<div style="width: 150px">'.$Fn->q('form')->imageCover( $imageCoverOpt ).'</div>' )
+->field("username")
+        ->label( 'ชื่อผู้ใช้' )
+        ->autocomplete('off')
+        ->addClass('form-control')
+        ->value( !empty($data->username)? $data->username:'' )
+->field("password")
+        ->label( 'รหัสผ่าน' )
+        ->autocomplete('off')
+        ->addClass('form-control')
+        ->value( !empty($data->password)? $data->password:'' )
+
+->field("bankid")
+        ->label( 'เลขบัญชี' )
+        ->autocomplete('off')
+        ->addClass('form-control')
+        ->value( !empty($data->bankid)? $data->bankid:'' )
+
+->field("bank")
+        ->label( 'ธนาคาร' )
+        ->autocomplete('off')
+        ->addClass('form-control')
+        ->value( !empty($data->bank)? $data->bank:'' )
+
+->field("personalid")
+        ->label( 'เลขบัตรประชาชน' )
+        ->autocomplete('off')
+        ->addClass('form-control')
+        ->value( !empty($data->personalid)? $data->personalid:'' )
+
+->field("typemonney")
+        ->label( 'ประเภทการโอนเงิน' )
+        // ->select()
+        ->autocomplete('off')
+        ->addClass('form-control')
+        ->value( !empty($data->typemonney)? $data->typemonney:'' )
+
 
  ->field("name")
         ->label( 'ชื่อ*' )
@@ -85,6 +121,8 @@ $formBox = $form->create()
         ->addClass('form-control')
         ->value( !empty($data->line)? $data->line:'' )
 
+
+
 ->field("remarks")
         ->type( 'textarea' )
         ->label( 'หมายเหตุ' )
@@ -102,7 +140,7 @@ $arr['form'] = '<form method="post" action="'.asset( $formAction ).'" data-plugi
 # fotter: buttons
 $arr['button'] = '<button type="submit" class="btn btn-primary btn-submit ml-2"><span class="btn-text">บันทึก</span></button>';
 
-$arr['width'] = 700;
+$arr['width'] = 800;
 
 
 http_response_code(200);

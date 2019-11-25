@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Contact extends Model
+class guide extends Model
 {
-    protected $table = 'contacts';
-    public $primaryKey = 'id';
+     protected $table = 'invoice';
+    public $primaryKey = 'invoiceid';
     public $itemstamps = false;
     public $maxlimit = 24;
 
@@ -16,13 +16,9 @@ class Contact extends Model
     // public $fields = ['*'];
 
     protected $fillable = [
-        'name', 'username', 'password', 'bankid', 'bank', 'personalid','typemonney',
-        
-        'email', 'phone_number', 'line',
+        'invoiceuserid ', 'invoiceusername ', 'invoicebankid ', 
 
-        'company', 'job',
-
-        'remarks'
+        'invoiceback ', 'invoicetype ', 'invoicelist ','invoiceprice '
     ];
 
     protected $hidden = [];
@@ -30,14 +26,15 @@ class Contact extends Model
     # get: Data form database
     public function get($id){
 
-        $sth = DB::table( $this->table );
+        $sth = DB::table( $this->table)->join('monn', 'invoice.invoicetype', '=', 'monn.monneytypeid');
+       
 
         // $sth->select( $this->fillable );
 
         // set condition
 
         $sth->where($this->primaryKey, '=', $id );
-        $sth->where( 'status', '=', 1 );
+        // $sth->where( 'status', '=', 1 );
 
         $results = $sth->first();
 
@@ -65,7 +62,8 @@ class Contact extends Model
         }
 
         # connect DB
-        $sth = DB::table( $this->table );
+        $sth = DB::table( $this->table)->join('monn', 'invoice.invoicetype', '=', 'monn.monneytypeid');
+         // dd($sth);
 
         # set select: fields
         // $sth->select( $this->fields );
@@ -79,7 +77,7 @@ class Contact extends Model
         }
 
         if( !empty($request->q) ){
-            $sth->where( 'name', 'LIKE', "{$request->q}%" );
+            $sth->where( 'invoiceid', 'LIKE', "{$request->q}%" );
         }
 
         # set sort data
@@ -95,8 +93,8 @@ class Contact extends Model
             // }
         }
         else{
-            $sth->orderby( 'updated_at', 'desc' );
-            $sth->orderby( 'name', 'asc' );
+            $sth->orderby( 'invoice.updated_at', 'desc' );
+            $sth->orderby( 'invoice.invoiceid', 'asc' );
         }
 
         $sth->skip( ($ops['page']*$ops['limit'])- $ops['limit']);
@@ -149,5 +147,5 @@ class Contact extends Model
 
         return $data;
     }
-
 }
+

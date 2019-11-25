@@ -1,23 +1,23 @@
 <?php
 
-class ContactsDataTables extends Ui
+class invoicelist extends Ui
 {
 	function __construct() {
         parent::__construct();
 	}
 	
-	public $curentLink = '/contacts';
+	public $curentLink = '/guide';
 
     public function keys()
     {
     	$key = [];
 
     	$key[] = ['label'=>'#', 'cls'=>'td-index', 'type'=>'index'];
-    	$key[] = ['id'=>'status', 'label'=>'status', 'cls'=>'td-status', 'type' => 'status'];
-    	$key[] = ['id'=>'name', 'label'=>'ชื่อ', 'cls'=>'td-name', 'type' => 'groupName', 'icon'=>'user-circle'];
-    	$key[] = ['id'=>'email', 'label'=>'อีเมล', 'cls'=>'td-email', 'icon'=>'envelope'];
-    	$key[] = ['id'=>'phone_number', 'label'=>'หมายเลขโทรศัพท์', 'cls'=>'td-phone', 'icon'=>'phone-alt'];
-    	$key[] = ['id'=>'company', 'label'=>'ตำแหน่งงานและบริษัท', 'cls'=>'td-company', 'icon'=>'building'];
+    	$key[] = ['id'=>'invoiceid', 'label'=>'เลขที่', 'cls'=>'td-invoiceid' ,'icon'=>'user'];
+    	// $key[] = ['id'=>'name', 'label'=>'ชื่อ', 'cls'=>'td-name', 'icon'=>'user-circle'];
+    	$key[] = ['id'=>'monneytypename', 'label'=>'ประเภทการโอน', 'cls'=>'td-monneytypename', 'icon'=>'envelope'];
+    	// $key[] = ['id'=>'phone_number', 'label'=>'หมายเลขโทรศัพท์', 'cls'=>'td-phone', 'icon'=>'phone-alt'];
+    	// $key[] = ['id'=>'company', 'label'=>'ตำแหน่งงานและบริษัท', 'cls'=>'td-company', 'icon'=>'building'];
 		// $key[] = ['id'=>'tags', 'label'=>'แท็ก', 'cls'=>'td-group-status'];
 		
     	$key[] = ['id'=>'updated_at', 'label'=>'แก้ไขล่าสุด', 'cls'=>'td-date td-light', 'type'=>'date', 'icon'=>'calendar-alt'];
@@ -92,7 +92,7 @@ class ContactsDataTables extends Ui
 				$tds .= '<td'.$cls.'>'.$val.'</td>';
 			}
 
-			$tr .= '<tr contact-id="'.$item['id'].'">'.$tds.'</tr>';
+			$tr .= '<tr contact-id="'.$item['invoiceid'].'">'.$tds.'</tr>';
 		}
 
     	return $tr;
@@ -146,8 +146,8 @@ class ContactsDataTables extends Ui
 
     public function actions($data)
     {
-    	$val = '<a href="'.asset( $this->curentLink. '/'.$data['id']).'/edit" data-plugin="lightbox" class="btn btn-sm btn-outline-warning" title="แก้ไข"><i class="fas fa-pen"></i></a>';
-		$val .= '<a href="'.asset( $this->curentLink. '/'.$data['id'].'/delete').'" data-plugin="lightbox" class="btn btn-sm btn-outline-danger ml-2" title="ลบ"><i class="fas fa-trash-alt"></i></a>';
+    	$val = '<a href="'.asset( $this->curentLink. '/'.$data['invoiceid']).'/edit" data-plugin="lightbox" class="btn btn-sm btn-outline-warning" title="แก้ไข"><i class="fas fa-pen"></i></a>';
+		$val .= '<a href="'.asset( $this->curentLink. '/'.$data['invoiceid'].'/delete').'" data-plugin="lightbox" class="btn btn-sm btn-outline-danger ml-2" title="ลบ"><i class="fas fa-trash-alt"></i></a>';
 
 		return $val;
     }

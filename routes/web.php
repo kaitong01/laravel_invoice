@@ -32,4 +32,14 @@ Route::group(['middleware' => ['auth']], function () {
     ]);
     Route::get('/contacts/{id}/delete', 'ContactController@delete');
 
+    Route::resource('/guide', 'guideController')->except([
+        'create', 'store', 'update', 'destroy'
+    ]);
+    Route::get('/guide/{id}/delete', 'ContactController@delete');
+
+    Route::resource('/invoice', 'guideAdminController')->except([
+        'create', 'store', 'update', 'destroy'
+    ]);
+    // Route::get('/contacts/{id}/delete', 'ContactController@delete');
+
 });

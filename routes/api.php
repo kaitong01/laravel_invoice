@@ -20,6 +20,12 @@ Route::prefix('v1')->group(function () {
         'index', 'store', 'update', 'destroy'
     ]);
 
+Route::apiResource('/guide', 'Api\ApiGiudeController')->only([
+        'index', 'store', 'update', 'destroy'
+    ]);
+// Route::apiResource('/guide/invoice', 'Api\ApiguideAdminController')->only([
+//         'index', 'store', 'update', 'destroy'
+//     ]);
     // Route::apiResources([
     //     'contacts' => 'Api\ApiContactController',
     // ]);

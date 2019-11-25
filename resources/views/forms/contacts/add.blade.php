@@ -44,16 +44,16 @@ $formBox = $form->create()
    ->field($imageCoverOpt['name'])
         ->label('รูป')
         ->text( '<div style="width: 150px">'.$Fn->q('form')->imageCover( $imageCoverOpt ).'</div>' )
-->field("username")
-        ->label( 'ชื่อผู้ใช้' )
-        ->autocomplete('off')
-        ->addClass('form-control')
-        ->value( !empty($data->username)? $data->username:'' )
-->field("password")
-        ->label( 'รหัสผ่าน' )
-        ->autocomplete('off')
-        ->addClass('form-control')
-        ->value( !empty($data->password)? $data->password:'' )
+// ->field("username")
+//         ->label( 'ชื่อผู้ใช้' )
+//         ->autocomplete('off')
+//         ->addClass('form-control')
+//         ->value( !empty($data->username)? $data->username:'' )
+// ->field("password")
+//         ->label( 'รหัสผ่าน' )
+//         ->autocomplete('off')
+//         ->addClass('form-control')
+//         ->value( !empty($data->password)? $data->password:'' )
 
 ->field("bankid")
         ->label( 'เลขบัญชี' )
@@ -121,8 +121,6 @@ $formBox = $form->create()
         ->addClass('form-control')
         ->value( !empty($data->line)? $data->line:'' )
 
-
-
 ->field("remarks")
         ->type( 'textarea' )
         ->label( 'หมายเหตุ' )
@@ -140,7 +138,7 @@ $arr['form'] = '<form method="post" action="'.asset( $formAction ).'" data-plugi
 # fotter: buttons
 $arr['button'] = '<button type="submit" class="btn btn-primary btn-submit ml-2"><span class="btn-text">บันทึก</span></button>';
 
-$arr['width'] = 800;
+$arr['width'] = 700;
 
 
 http_response_code(200);

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class guide extends Model
+class Guide extends Model
 {
-     protected $table = 'invoice';
-    public $primaryKey = 'invoiceid';
+    protected $table = 'invoice';
+    public $primaryKey = 'invoice_id';
     public $itemstamps = false;
     public $maxlimit = 24;
 
@@ -16,9 +16,9 @@ class guide extends Model
     // public $fields = ['*'];
 
     protected $fillable = [
-        'invoice_userid ', 'invoice_username ', 'invoice_bankid ', 
+        'invoice_id ', 'invoice_date ', 'invoice_type ', 'invoice_name ', 
 
-        'invoice_back ', 'invoice_type ', 'invoice_list ','invoice_listprice '
+        'invoice_bankid ', 'invoice_bank ', 'invoice_listdetail ','invoice_listprice '
     ];
 
     protected $hidden = [];
@@ -26,7 +26,7 @@ class guide extends Model
     # get: Data form database
     public function get($id){
 
-        $sth = DB::table( $this->table)->join('monn', 'invoice.invoice_type', '=', 'monn.monneytypeid');
+        $sth = DB::table( $this->table)->join('money', 'invoice.invoice_type', '=', 'money.monney_typeid');
        
 
         // $sth->select( $this->fillable );
@@ -62,7 +62,7 @@ class guide extends Model
         }
 
         # connect DB
-        $sth = DB::table( $this->table)->join('monn', 'invoice.invoicetype', '=', 'monn.monneytypeid');
+        $sth = DB::table( $this->table)->join('money', 'invoice.invoice_type', '=', 'money.monney_typeid');
          // dd($sth);
 
         # set select: fields
@@ -77,7 +77,7 @@ class guide extends Model
         }
 
         if( !empty($request->q) ){
-            $sth->where( 'invoiceid', 'LIKE', "{$request->q}%" );
+            $sth->where( 'invoice_id', 'LIKE', "{$request->q}%" );
         }
 
         # set sort data
@@ -94,7 +94,7 @@ class guide extends Model
         }
         else{
             $sth->orderby( 'invoice.updated_at', 'desc' );
-            $sth->orderby( 'invoice.invoiceid', 'asc' );
+            $sth->orderby( 'invoice.invoice_id', 'asc' );
         }
 
         $sth->skip( ($ops['page']*$ops['limit'])- $ops['limit']);

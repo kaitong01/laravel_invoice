@@ -1,10 +1,10 @@
 <?php
 
 $arr['title'] = 'ลบรายการใบสำคัญจ่าย';
-$arr['title'] .= '<br>'.$data->invoicebank;
+$arr['title'] .= '<br>'.$data->invoice_bank;
 
-$arr['form'] = '<form  method="post" action="'.asset( 'api/v1/contacts/'.$data->invoiceid).'" data-plugin="formSubmit"></form>';
-$arr['hiddenInput'][] = array('name'=>'invoiceid','value'=>$data->invoiceid);
+$arr['form'] = '<form  method="post" action="'.asset( 'api/v1/contacts/'.$data->invoice_id).'" data-plugin="formSubmit"></form>';
+$arr['hiddenInput'][] = array('name'=>'invoice_id','value'=>$data->invoice_id);
 $arr['hiddenInput'][] = array('name'=>'_method','value'=>'delete');
 $arr['hiddenInput'][] = array('name'=>'_token', 'value'=>csrf_token());
 

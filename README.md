@@ -12,3 +12,9 @@
 - Run command `php artisan serve` and open `http://127.0.0.1:8000` on browser
 
 
+# Run Steps in Ubuntu
+- Run command `composer install`
+- Run command `php artisan key:generate`
+
+- Run command `php artisan storage:link`
+- Run command `php artisan cache:clear`

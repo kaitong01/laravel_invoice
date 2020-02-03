@@ -1,7 +1,7 @@
 # LARAVEL & BKKSOFT 
 
 
-## Run steps
+## Run Steps
 - Clone GitHub repo for this project locally
 - Run command `composer install`
 - Copy .env.example -> .env and  update environments value
